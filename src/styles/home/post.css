@@ -1,0 +1,75 @@
+.create-post-container {
+  background-color: var(--sidebar-color);
+  width: 100%;
+  border-radius: 10px;
+}
+
+.create-post-container > div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  padding-left: 1rem;
+}
+.create-post-container > div:last-child{
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 850px) {
+  .create-post-container {
+    width: 100%;
+  }
+}
+
+.create-post-container > div:last-child {
+  margin-top: 1rem;
+  padding: 0 3rem;
+  padding-bottom: .75rem;
+}
+
+.create-post-container > div > textarea {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: var(--text-color);
+  border-radius: 6px;
+  font-size: 17px;
+  font-weight: 500;
+  transition: var(--tran-05);
+  margin-top: 1.4rem;
+  padding-left: 2rem;
+}
+
+.create-post-container > div:last-child > div > label > .post-icons,
+.create-post-container > div:last-child > div > .post-icons {
+  font-size: 1.4rem;
+  margin: 0 0.75rem;
+  cursor: pointer;
+}
+
+.create-post-container > div:last-child > div > .post-icons:last-child {
+  font-size: 1.2rem;
+  margin-left: 0.55rem;
+}
+
+.create-post-container > div:last-child > div {
+  margin-top: 20px;
+}
+
+.preview-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 2rem;
+}
+
+.preview-box > span{
+  margin: 0 5px;
+}
+
+.preview-box > span > img{
+  width: 135px;
+}
