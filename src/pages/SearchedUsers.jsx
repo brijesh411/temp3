@@ -25,7 +25,7 @@ const SearchedUsers = ({ toggleDrawer }) => {
     if (debouncedValue) {
       dispatch(getSearchedUsers({ username: searchedUsers }));
     }
-  }, [debouncedValue, dispatch]);
+  }, [debouncedValue, dispatch, searchedUsers]);
   function navigateHandler(id) {
     navigate(`/profile/${id}`);
   }

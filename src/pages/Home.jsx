@@ -17,7 +17,7 @@ import { topNews } from "../__mocks__/TopNews";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const [newsLoading, setNewsLoading] = useState();
+  const [newsLoading] = useState();
   const {
     explore_posts: posts,
     explore_likes: likes,

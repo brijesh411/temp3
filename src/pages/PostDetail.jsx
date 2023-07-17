@@ -154,7 +154,7 @@ const PostDetail = () => {
       .then(() => {
         dispatch(getPostComments({ postId: id }));
       });
-  }, [dispatch, id, followed]);
+  }, [dispatch, id, followed, user?.user?._id]);
   
 
   useEffect(() => {
@@ -162,10 +162,10 @@ const PostDetail = () => {
       .then(unwrapResult)
       .then((obj) => {
         setSaved(
-          obj.saved.find((post) => post.toString() === id) ? true : false
+          obj.saved.find((post) => post.toString() === user.user._id.toString()) ? true : false
         );
       });
-  }, []);
+  }, [dispatch, id, user?.user?._id]);
 
   if (loading) {
     return <Loading />;
@@ -243,6 +243,7 @@ const PostDetail = () => {
           items={post?.images?.map((img) => (
             <div className="carousel-item">
               <img
+                alt=""
                 src={img}
                 loading="lazy"
                 onDragStart={handleDragStart}
@@ -259,6 +260,7 @@ const PostDetail = () => {
       ) : (
         <div className="single-carousel-item">
           <img
+            alt=""
             style={{ width: "50vw" }}
             src={post?.images?.[0]}
             className="carousel-img"

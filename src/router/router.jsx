@@ -16,6 +16,7 @@ const Router = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     user?.user?._id && dispatch(loggedInUserProfile());
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user?.user?._id]);
   return (
     <Routes>
