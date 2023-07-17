@@ -56,7 +56,13 @@ const PostDetail = () => {
     dispatch(deleteComment({ commentId }))
       .then(unwrapResult)
       .then(() => {
-        dispatch(getPostComments({ postId: id }));
+        dispatch(getPostComments({ postId: id }))
+        .then(() => {
+          const comment = comments.find((c) => c._id === commentId);
+          if (comment) {
+            comments.splice(comments.indexOf(comment), 1);
+          }
+        });
       });
   };
 
@@ -69,35 +75,39 @@ const PostDetail = () => {
   };
 
   const likehandler = () => {
-    setLike((prev) => !prev);
-    dispatch(LikePost({ id: post._id }))
-      .then(unwrapResult)
-      .then((obj) => {
-        if (obj.liked) {
-          setLike(true);
-        } else {
-          setLike(false);
-        }
-      })
-      .catch((obj) => {
-        setLike(like);
-        toast.error("Internal Server Error", options);
-      });
+    if (post) {
+      setLike((prev) => !prev);
+      dispatch(LikePost({ id: post._id }))
+        .then(unwrapResult)
+        .then((obj) => {
+          if (obj.liked) {
+            setLike(true);
+          } else {
+            setLike(false);
+          }
+        })
+        .catch((obj) => {
+          setLike(like);
+          toast.error("Internal Server Error", options);
+        });
+    }
   };
-
+  
   const savePostHandler = () => {
-    setSaved((prev) => !prev);
-    dispatch(savePost({ postId: post._id }))
-      .then(unwrapResult)
-      .then((obj) => {
-        obj.saved ? setSaved(true) : setSaved(false);
-      })
-      .catch((obj) => {
-        setSaved(save);
-        toast.error("Internal Server Error", options);
-      });
+    if (post) {
+      setSaved((prev) => !prev);
+      dispatch(savePost({ postId: post._id }))
+        .then(unwrapResult)
+        .then((obj) => {
+          obj.saved ? setSaved(true) : setSaved(false);
+        })
+        .catch((obj) => {
+          setSaved(save);
+          toast.error("Internal Server Error", options);
+        });
+    }
   };
-
+  
   function addCommentHandler() {
     if (comment.current.value.length === 0) {
       toast.warn("You cannot send empty comments ", options);
@@ -133,20 +143,19 @@ const PostDetail = () => {
       .then(unwrapResult)
       .then((obj) => {
         setFollowing(
-          obj?.post?.user?.followers?.find((p) => p == user?.user?._id)
+          obj?.post?.user?.followers?.find((p) => p === user?.user?._id)
         );
         setLike(
           obj?.post?.likes?.find(
             (userX) => userX?.toString() === user.user._id.toString()
           )
-            ? true
-            : false
         );
       })
       .then(() => {
         dispatch(getPostComments({ postId: id }));
       });
   }, [dispatch, id, followed]);
+  
 
   useEffect(() => {
     dispatch(userProfile({ id: user?.user?._id }))
@@ -178,7 +187,7 @@ const PostDetail = () => {
             <span>{post?.user?.role}</span>
           </h3>
         </div>
-        {user?.user?._id == post?.user?._id && (
+        {user?.user?._id === post?.user?._id && (
           <div>
             <button className="primary-btn">Edit</button>
             {!deleting ? (
@@ -196,19 +205,19 @@ const PostDetail = () => {
             )}
           </div>
         )}
-        {user?.user?._id != post?.user?._id && follow_loading && isFollowing ? (
+        {user?.user?._id !== post?.user?._id && follow_loading && isFollowing ? (
           <button className="danger-btn">
             <CircularProgress style={{ color: "white" }} size={"1rem"} />
           </button>
         ) : (
-          user?.user?._id != post?.user?._id &&
+          user?.user?._id !== post?.user?._id &&
           follow_loading && (
             <button className="primary-btn">
               <CircularProgress style={{ color: "white" }} size={"1rem"} />
             </button>
           )
         )}
-        {!follow_loading && user?.user?._id != post?.user?._id && (
+        {!follow_loading && user?.user?._id !== post?.user?._id && (
           <>
             {isFollowing ? (
               <button

@@ -59,7 +59,7 @@ export default function FollowingDrawer({ profile }) {
               key={user._id}
               onClick={() => navigate(`/profile/${user._id}`)}
               secondaryAction={
-                loggedInUser?.user?._id == profile._id && (
+                loggedInUser?.user?._id === profile._id && (
                   <Button
                     onClick={(e) => {
                       e.stopPropagation();

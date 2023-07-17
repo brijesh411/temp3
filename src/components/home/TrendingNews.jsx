@@ -22,7 +22,6 @@ export default function TrendingNews({ news }) {
               <Avatar alt={news.source.name} src={news.urlToImage} />
             </ListItemAvatar>
             <ListItemText
-              // primary={news.source.name}
               primary={
                 <React.Fragment>
                   <Typography

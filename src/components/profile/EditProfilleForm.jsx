@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../../styles/profile/profile.css";
 import "../../styles/profile/edit-profile.css";
@@ -10,17 +10,16 @@ import { useNavigate } from "react-router-dom";
 import { unwrapResult } from "@reduxjs/toolkit";
 
 const editProfileSchema = Yup.object({
-  fullname: Yup.string().max(25).trim().required("FullName is Required"),
+  fullname: Yup.string().max(25).trim(),
   username: Yup.string().max(25).trim().required("Username is Required"),
   email: Yup.string().email().required("Username is Required"),
   mobile: Yup.string()
-    .length(10, "Please enter a valid mobile no.")
-    .required("Mobile No. is Required"),
+    .length(10, "Please enter a valid mobile no."),
   website: Yup.string(),
   instagram: Yup.string(),
   gender: Yup.string(),
-  story: Yup.string().required("Please write something about you"),
-  role: Yup.string().required("Please select your role"),
+  story: Yup.string(),
+  role: Yup.string()
 });
 
 const EditProfilleForm = () => {
@@ -200,7 +199,7 @@ const EditProfilleForm = () => {
           id="website"
           type="text"
           name="website"
-          label="Website"
+          label="LinkedIn Handlename"
           variant="outlined"
           value={values.website}
           onChange={handleChange}
@@ -249,9 +248,10 @@ const EditProfilleForm = () => {
           helperText={touched.role && errors.role}
           error={Boolean(touched.role && errors.role)}
         >
+          <MenuItem value={"user"}>user</MenuItem>          
           <MenuItem value={"Business"}>Business</MenuItem>
           <MenuItem value={"Influencer"}>Influencer</MenuItem>
-          <MenuItem value={"Influencer"}>Student</MenuItem>
+          <MenuItem value={"Student"}>Student</MenuItem>
           <MenuItem value={"UI/UX Designer"}>UI/UX Designer</MenuItem>
           <MenuItem value={"Frontend Developer"}>Frontend Developer</MenuItem>
           <MenuItem value={"FullStack MERN Developer"}>

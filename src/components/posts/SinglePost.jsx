@@ -105,9 +105,6 @@ const SinglePost = ({ post, likes, saved }) => {
             <span>{post?.user?.role}</span>
           </h3>
         </div>
-        <div className="dot">
-          <i className="bx bx-dots-vertical-rounded"></i>
-        </div>
       </div>
       <div className="imageBx">
         <img src={post?.images?.[0]} alt={post?.content} className="cover" />
@@ -144,8 +141,6 @@ const SinglePost = ({ post, likes, saved }) => {
       <h4 className="likes">{showLikes()} Likes</h4>
       <h4 className="message">
         <b>{post?.user?.fullname || post?.user?.username}</b> {post?.content}{" "}
-        <span>#onepiece</span>
-        <span>#anime</span>
       </h4>
       <h4 className="comments">View all comments</h4>
       <div onClick={(e) => e.stopPropagation()} className="add-comment">

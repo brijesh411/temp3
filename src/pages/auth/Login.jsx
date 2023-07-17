@@ -24,9 +24,9 @@ const AuthPage = () => {
       <div className="panels-container">
         <div className="panel left-panel">
           <div className="content">
-            <h3>3 Million+ Creators</h3>
+            <h3 style={{ textAlign: 'center', color: 'pink' }}>Welcome To SocioSphere</h3>
             <p>
-              Be a part of India's most active community of creators,
+              Be a part of making SocioSphere India's most active community of creators,
               performers, writers and artists across geographies and languages.
               Write your pieces, garner thousands of followers and make your
               work timeless
@@ -43,10 +43,9 @@ const AuthPage = () => {
         </div>
         <div className="panel right-panel">
           <div className="content">
-            <h3>100 Million+ Posts</h3>
+            <h3 style={{ textAlign: 'center', color: 'orange' }}>JOIN OUR COMMUNITY</h3>
             <p>
-              Clocking more than 120 thousand posts a day, YourQuote is India's
-              largest user generated content platform. Login Now and get
+            Join SocioSphere and connect with a vibrant community of like-minded individuals. Experience the power of social networking and discover new opportunities. Share your thoughts, interests, and moments with friends and family.  Login Now and get
               started with your writing journey.
             </p>
             <button

@@ -11,16 +11,12 @@ import SuggestedUser from "../components/home/SuggestedUser";
 import RecommendedHomePosts from "../components/home/RecommendedPosts";
 import "../styles/home/home.css";
 import TrendingNews from "../components/home/TrendingNews";
-import fetchNews from "../context/slice/fetchNews";
 import { useState } from "react";
-import { toast } from "react-toastify";
-import { options } from "../utils/ToastOptions";
 import NoSuggestedInfluencers from "../assets/nodata/NoSuggestedUsers.avif";
 import { topNews } from "../__mocks__/TopNews";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const [news, setNews] = useState([]);
   const [newsLoading, setNewsLoading] = useState();
   const {
     explore_posts: posts,
@@ -40,23 +36,10 @@ const Home = () => {
       });
   }, [dispatch]);
 
-  async function fetchTrendingNews() {
-    setNewsLoading((prev) => prev);
-    fetchNews()
-      .then((res) => {
-        setNews(res);
-      })
-      .catch((err) => {
-        toast.error(err.message, options);
-      })
-      .finally(() => {
-        setNewsLoading((prev) => prev);
-      });
-  }
+
 
   useEffect(() => {
     dispatch(RecommendedPosts());
-    // news.length === 0 && fetchTrendingNews();
   }, [dispatch]);
 
   return (
@@ -98,9 +81,9 @@ const Home = () => {
           >
             Top Trending News
           </Typography>
-          {newsLoading && news.length === 0 && (
-            <CircularProgress color="primary" />
-          )}
+          
+
+
           {!newsLoading && topNews.length > 0 && (
             <TrendingNews news={topNews.slice(0, 6)} />
           )}
@@ -149,7 +132,6 @@ const Home = () => {
           )}
         </div>
       </div>
-      {/* POSTS */}
     </section>
   );
 };

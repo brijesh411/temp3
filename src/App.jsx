@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { darkTheme, theme } from "./theme/Theme";
 
-function App() {
+const App = () => {
   const { darkMode } = useSelector((store) => store.mode);
   return (
     <body className={darkMode ? "dark" : ""}>

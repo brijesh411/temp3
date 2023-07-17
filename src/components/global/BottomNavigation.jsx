@@ -27,7 +27,7 @@ const BottomNavigation = () => {
           </Link>
         </li>
         <li>
-          <a onClick={toggleDrawer("right", true)} href="#">
+          <a onClick={toggleDrawer("right", true)} href="top">
             <span className="icon">
               <i className="bx bx-search"></i>
             </span>

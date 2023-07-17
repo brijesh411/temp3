@@ -1,7 +1,5 @@
 .header__wrapper > header {
   width: 100%;
-  /* background: url("https://fictionhorizon.com/wp-content/uploads/2023/03/FairyTail.jpg")
-    no-repeat 50% 20% / cover; */
   min-height: calc(100px + 15vw);
 }
 .header__wrapper > header > img {
@@ -77,7 +75,7 @@
   justify-content: center;
 }
 .header__wrapper .cols__container .left__col h2 i {
-  color: rgb(12, 165, 12);
+  color: rgb(12, 60, 165);
   cursor: pointer;
 }
 .header__wrapper .cols__container .left__col > h3 {

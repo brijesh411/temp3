@@ -12,6 +12,9 @@ import {
   Tab,
   Tabs,
 } from "@mui/material";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
@@ -49,7 +52,7 @@ const UserProfile = ({ profile, loading, closeFriend }) => {
     (store) => store.users
   );
 
-  const isFollowing = profile?.followers?.find((p) => p._id == user?.user?._id);
+  const isFollowing = profile?.followers?.find((p) => p._id === user?.user?._id);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -95,7 +98,7 @@ const UserProfile = ({ profile, loading, closeFriend }) => {
           {profile?.fullname && (
             <h2>
               {profile?.fullname}
-              {user.user._id != profile?._id && (
+              {user.user._id !== profile?._id && (
                 <>
                   {!isCloseFriend ? (
                     <i
@@ -111,16 +114,14 @@ const UserProfile = ({ profile, loading, closeFriend }) => {
                 </>
               )}
               {totalLikes > 10 && (
-                <i
-                  onClick={() =>
-                    toast.info(
-                      "Must have atleast 10 likes to be verified!!",
-                      options
-                    )
-                  }
-                  style={{ marginLeft: ".5rem" }}
-                  className="bx bx-check-circle"
-                ></i>
+               
+                <VerifiedUserIcon
+                style={{ marginLeft: ".5rem", color: "#3897f0", cursor: "pointer" }}
+                onClick={() =>
+                  toast.info("Must have at least 10 likes to be verified!!", options)
+                }
+              />              
+
               )}
             </h2>
           )}
@@ -152,19 +153,19 @@ const UserProfile = ({ profile, loading, closeFriend }) => {
                     : "https://www.instagram.com"
                 }
               >
-                <i className="fab fa-instagram"></i>
+              {<InstagramIcon />}
               </a>
               <a
                 target="_blank"
                 rel="noreferrer"
                 href={
                   profile?.website
-                    ? "https://" + profile?.website
-                    : "https://www.google.com"
+                    ? "https://www.linkedin.com/in/" + profile?.website
+                    : "https://in.linkedin.com/"
                 }
                 style={{ marginLeft: "1rem" }}
               >
-                <i className="fab fa-linkedin"></i>
+                {<LinkedInIcon />}
               </a>
             </ul>
           </div>
@@ -225,7 +226,7 @@ const UserProfile = ({ profile, loading, closeFriend }) => {
               <div className="photos">
                 {!image_loading &&
                   images.length > 0 &&
-                  images?.map((img) => <img key={img} src={img} alt="Photo" />)}
+                  images?.map((img) => <img key={img} src={img} alt="" />)}
               </div>
               {!image_loading && images.length === 0 && (
                 <div
@@ -277,6 +278,7 @@ const UserProfile = ({ profile, loading, closeFriend }) => {
                         onClick={() => navigate(`/profile/${user._id}`)}
                         secondaryAction={
                           <Button
+                          
                             target="_blank"
                             rel="noreferrer"
                             href={

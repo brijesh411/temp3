@@ -7,12 +7,12 @@ const PostSkeleton = () => {
       <div className="top">
         <div className="user-details">
           <div className="user-profile_img">
-            <img className="skeleton cover" />
+            <img alt="cover" className="skeleton cover" />
           </div>
-          <h3
+          <span
             className="skeleton skeleton-text"
             style={{ width: "100px" }}
-          ></h3>
+          ></span>
         </div>
         <div className="dot">
           <i className="bx bx-dots-vertical-rounded"></i>
@@ -21,10 +21,10 @@ const PostSkeleton = () => {
       <div className="imageBx">
         <img alt={""} className="skeleton cover" />
       </div>
-      <h4 style={{ width: "50px" }} className="skeleton likes"></h4>
-      <h4 className="skeleton skeleton-text message" style={{ width: "100%", height: "20px" }}>
+      <span style={{ width: "50px" }} className="skeleton likes"></span>
+      <span className="skeleton skeleton-text message" style={{ width: "100%", height: "20px" }}>
         
-      </h4>
+      </span>
       <div className="add-comment">
         <div className="user-img">
           <img className="skeleton cover" alt="" />
@@ -34,7 +34,7 @@ const PostSkeleton = () => {
           type="text"
         />
       </div>
-      <h5 className="skeleton skeleton-text post-time" style={{ width: "150px" }}></h5>
+      <span className="skeleton skeleton-text post-time" style={{ width: "150px" }}></span>
     </div>
   );
 };

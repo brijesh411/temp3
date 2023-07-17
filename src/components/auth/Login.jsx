@@ -13,8 +13,8 @@ const Login = () => {
     useFormik({
       enableReinitialize: true,
       initialValues: {
-        login_email: "",
-        login_password: "",
+        login_email: "x3on@gmail.com",
+        login_password: "x3on2001",
       },
       validationSchema: Yup.object({
         login_email: Yup.string()
@@ -114,21 +114,7 @@ const Login = () => {
       <button onClick={handleSubmit} type="submit" className="btn solid">
         Login
       </button>
-      <p className="social-text">Or Sign in with social platforms</p>
-      <div className="social-media">
-        <a href="#" className="social-icon">
-          <i className="fa fa-facebook-f"></i>
-        </a>
-        <a href="#" className="social-icon">
-          <i className="fa fa-twitter"></i>
-        </a>
-        <a href="#" className="social-icon">
-          <i className="fa fa-google"></i>
-        </a>
-        <a href="#" className="social-icon">
-          <i className="fa fa-linkedin-in"></i>
-        </a>
-      </div>
+      
     </form>
   );
 };

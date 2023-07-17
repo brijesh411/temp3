@@ -46,7 +46,7 @@ const Comments = ({ comments, loading, deleteCommentHandler }) => {
             >
               <div className="card-top">
                 <div className="card-content">
-                  <img src={comment.user.avatar} />
+                  <img alt="user" src={comment.user.avatar} />
                   <span>
                     <small>{comment.user.username}</small>{" "}
                     <small>{comment.content}</small>
@@ -58,7 +58,7 @@ const Comments = ({ comments, loading, deleteCommentHandler }) => {
 
               <div className="card-bottom">
                 <div className="reply">
-                  <small>Edit</small>
+                  
                   <span className="dots"></span>
                   {userDetails._id === comment.user._id && (
                     <>
@@ -68,13 +68,10 @@ const Comments = ({ comments, loading, deleteCommentHandler }) => {
                       <span className="dots"></span>
                     </>
                   )}
-                  <small>Reply</small>
+                  
                 </div>
 
-                <div className="icons">
-                  <i className="fa fa-heart icon"></i>
-                  <i className="fa fa-check-circle-o icon"></i>
-                </div>
+                
               </div>
             </div>
           );

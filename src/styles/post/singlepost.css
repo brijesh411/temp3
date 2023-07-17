@@ -74,6 +74,7 @@
 .action-btns i {
   cursor: pointer;
   font-size: 24px;
+  color: rgb(205, 63, 94);
 }
 
 .action-btns > .left > i {

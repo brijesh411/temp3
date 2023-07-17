@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../styles/global/Sidebar.css";
-import Logo from "../../assets/FairyTailLogo.png";
+import Logo from "../../assets/earth.gif";
 import { useDispatch, useSelector } from "react-redux";
 import { togglemode } from "../../context/slice/modeSlice";
 import { authLogout } from "../../context/slice/authSlice";
@@ -28,7 +28,7 @@ const Sidebar = () => {
     dispatch(authLogout())
       .then(unwrapResult)
       .then(() => {
-        navigate("/");
+        navigate("/auth");
       });
   };
 
@@ -71,7 +71,7 @@ const Sidebar = () => {
             <li className="nav-link">
               <a
                 onClick={toggleDrawer("right", true)}
-                href="#"
+                href="top"
                 className={pathname === "/search" ? "active" : ""}
               >
                 <i
